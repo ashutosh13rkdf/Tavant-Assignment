@@ -26,6 +26,9 @@ public class LoanService {
 		for (LoanRecord loans : loanRecords) {
 			loans.setLoanStatus(actionType);
 			loans.setLastActionDate(new Date());
+			if("D".equalsIgnoreCase(actionType)) {
+				loans.setLoanStartDate(null);
+			}
 		}
 		loanRepo.saveAll(loanRecords);
 	}
